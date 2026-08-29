@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    
+    <!-- Google Font (optional but nice) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- ===== HEADER ===== -->
+        <header class="app-header">
+            <h1>⛅ Weather<span>App</span></h1>
+        </header>
+
+        <!-- ===== SEARCH SECTION ===== -->
+        <section class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Enter city name, e.g. London" 
+                    autofocus
+                />
+                <button id="search-btn">Search</button>
+            </div>
+            <button id="geo-btn" class="geo-btn" title="Use my current location">
+                📍
+            </button>
+        </section>
+
+        <!-- ===== ERROR MESSAGE ===== -->
+        <div id="error-msg" class="error-message hidden">
+            <span>⚠️</span>
+            <p>City not found. Please try again.</p>
+        </div>
+
+        <!-- ===== MAIN WEATHER CARD ===== -->
+        <main class="weather-card" id="weather-card">
+            <!-- Loading state (shown by default) -->
+            <div class="loading-state" id="loading-state">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+
+            <!-- Weather data (hidden initially) -->
+            <div class="weather-data hidden" id="weather-data">
+                <div class="city-info">
+                    <h2 id="city-name">--</h2>
+                    <p id="country-name">--</p>
+                </div>
+
+                <div class="weather-main">
+                    <img 
+                        id="weather-icon" 
+                        src="assets/icons/default.svg" 
+                        alt="Weather condition icon"
+                        class="weather-icon"
+                    />
+                    <div class="temperature">
+                        <span id="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <p id="weather-condition">--</p>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-label">💧 Humidity</span>
+                        <span class="detail-value" id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">🌬️ Wind</span>
+                        <span class="detail-value" id="wind-speed">-- km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">📈 Feels Like</span>
+                        <span class="detail-value" id="feels-like">--°C</span>
+                    </div>
+                </div>
+
+                <!-- Optional: last updated time -->
+                <p class="last-updated" id="last-updated">Last updated: --</p>
+            </div>
+        </main>
+
+        <!-- ===== 5-DAY FORECAST (optional but nice) ===== -->
+        <section class="forecast-section" id="forecast-section">
+            <h3>5-Day Forecast</h3>
+            <div class="forecast-container" id="forecast-container">
+                <!-- Forecast cards will be injected by JavaScript -->
+                <p class="forecast-placeholder">Search for a city to see the forecast.</p>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="app-footer">
+            <p>Data provided by <a href="#" id="api-credit">OpenWeatherMap</a></p>
+        </footer>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
